@@ -2,6 +2,7 @@ package main
 
 import (
 	"cmp"
+	"context"
 	"fmt"
 )
 
@@ -173,6 +174,21 @@ func main() {
 	case ch2 <- val:
 		fmt.Println(val)
 	default: // non-blocking
+	}
+
+	// 24. Context
+	contextFund()
+
+	// 25. HTTP server
+	httpServerFund()
+
+	// 26. HTTP client
+	ctx := context.Background()
+	response, err := httpClientFund(ctx, "http://example.com")
+	if err != nil {
+		fmt.Println("Error:", err)
+	} else {
+		fmt.Println("Response:", response)
 	}
 }
 
